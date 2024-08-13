@@ -1,0 +1,79 @@
+.if-quill-toolbar-container {
+    width: fit-content;
+    border-radius: 5px;
+    background-color: var(--if-bg-color);
+    border: none;
+    box-shadow: 2px 3px 8px 0 var(--if-box-shadow-col);
+    transition: 0.2s;
+    overflow: hidden;
+    height: 3em;
+}
+
+.if-toolbar-deactive {
+    height: 0;
+    opacity: 0;
+}
+
+.if-quill-toolbar {
+    border: none !important;
+}
+
+.if-toolbar-btn-sec {
+    display: flex;
+    align-items: center;
+    column-gap: 1em;
+    row-gap: 0.5em;
+}
+
+.if-toolbar-btn {
+    border-radius: 5px;
+    transition: 0.3s;
+    border: 1px solid transparent !important;
+    height: 2em !important;
+    width: 2em !important;
+    color: #444;
+
+    & svg {
+        height: unset !important;
+    }
+
+    & i {
+        font-size: 1.15em;
+    }
+
+    & .bi::before {
+        font-weight: bold !important;
+    }
+}
+
+.if-toolbar-btn:hover {
+    background: #d1d1d13d !important;
+    border: 1px solid var(--if-border-ult) !important;
+}
+
+.if-toolbar-btn:focus {
+    background: #d1d1d13d !important;
+    border: 1px solid var(--if-border-ult) !important;
+}
+
+.ql-snow.ql-toolbar button.ql-active {
+    background: #d1d1d13d !important;
+    border: 1px solid var(--if-border-ult) !important;
+}
+
+.if-editor-toolbar-color-picker {
+    position: absolute;
+    z-index: 3;
+}
+
+
+
+/***** Responsive css *****/
+@media screen and (max-width: 950px) {
+    .if-quill-toolbar-container {
+        width: 85vw;
+        overflow-x: auto;
+    }
+}
+
+/***** End Responsive css *****/

@@ -1,0 +1,350 @@
+.if-settings-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+/***** Side Nav css *****/
+.if-settings-side-nav {
+    width: 16em;
+}
+
+.if-settings-nav-list {
+    padding: 0.5em 0;
+    margin: 0;
+    border-right: 1px solid var(--if-border-ult);
+    width: inherit;
+    height: 75vh;
+    position: fixed;
+    background-color: var(--if-bg-color);
+}
+
+.if-settings-nav-opt {
+    list-style: none;
+    margin-bottom: 0.2em;
+
+    & a {
+        display: grid;
+        width: 100%;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        color: inherit;
+        grid-auto-flow: column;
+        position: relative;
+        align-items: center;
+
+        & div {
+            padding: 0.5em 1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            font-size: 1.05em;
+
+            & i {
+                font-size: 1.3em;
+            }
+        }
+    }
+}
+
+.if-settings-nav-opt a:hover {
+    background-color: var(--if-opt-active-col);
+}
+
+.if-settings-nav-opt .active {
+    background-color: var(--if-opt-active-col);
+}
+
+.if-settings-nav-opt a::after {
+    display: block;
+    content: "";
+    height: 0;
+    width: 0.3em;
+    background: linear-gradient(40deg, #55c2da, #4681f4);
+    position: absolute;
+    justify-self: end;
+    transition: 0.3s;
+    opacity: 0;
+    border-radius: 5px;
+}
+
+.if-settings-nav-opt .active::after {
+    height: 100%;
+    opacity: 1;
+}
+
+/***** End Side Nav css *****/
+
+/***** Top nav css *****/
+.if-settings-top-nav-box {
+    position: fixed;
+    top: 4.5em;
+    z-index: 5;
+    display: flex;
+    box-shadow: 0 2px 5px 0 var(--if-box-shadow-col);
+    border-radius: 30px;
+    background-color: var(--if-bg-color);
+    overflow: hidden;
+}
+
+.if-settings-top-nav-link {
+    color: inherit;
+    text-decoration: none;
+    display: grid;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.if-settings-top-nav-opt {
+    font-size: 1.3em;
+    padding: 0.5em 1em;
+}
+
+.if-settings-top-nav-link::after {
+    content: "";
+    width: 0;
+    height: 5px;
+    background: linear-gradient(40deg, #55c2da, #4681f4);
+    justify-self: center;
+    border-radius: 10px;
+    transition: 0.3s;
+    position: absolute;
+    align-self: flex-end;
+}
+
+.if-settings-top-nav-opt-box .active::after {
+    width: 100%;
+}
+
+.if-settings-top-nav-opt-box .active {
+    background-color: #00000012;
+}
+
+/***** End Top nav css *****/
+
+/***** Body section *****/
+.if-settings-body {
+    width: 45em;
+    padding: 1em;
+    min-height: 75vh;
+    display: grid;
+    gap: 1em;
+}
+
+.if-settings-body-container {
+    padding: 0.5em;
+    display: grid;
+    gap: 1em;
+    grid-template-rows: max-content;
+}
+
+/***** Profile settings *****/
+.if-settings-profile-img-box img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.if-change-prof-img-btn {
+    font-size: 1.2em;
+    padding: 0.1em 0.5em;
+    color: var(--if-text-col);
+    border-radius: 10px;
+    background-color: #85d0ee59;
+}
+
+.if-setttings-profile-user-det-box {
+    display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    grid-template-columns: minmax(auto, 1fr);
+    gap: 1em;
+}
+
+.if-setttings-profile-user-input-box {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.if-settings-prof-det-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: auto;
+    resize: none;
+    pointer-events: none;
+    text-overflow: ellipsis;
+    background-color: transparent;
+    color: inherit;
+}
+
+.if-setttings-profile-user-input-box::after {
+    content: "";
+    background-image: linear-gradient(40deg, #4681f4, #55c2da);
+    width: 0%;
+    height: 3px;
+    transition: 0.2s;
+}
+
+.if-settings-prof-det-input:focus {
+    pointer-events: all;
+}
+
+.if-settings-prof-det-input::placeholder {
+    color: inherit;
+}
+
+.if-setttings-profile-user-input-box:focus-within::after {
+    width: 100%;
+}
+
+/***** Crop img box css *****/
+.if-img-crop-popup-body {
+    width: 50vw;
+    height: 70vh;
+}
+
+.if-crop-img-popup-img-crop-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/***** End Crop img box css *****/
+
+/***** End Profile settings *****/
+
+/***** Theme settings css *****/
+.if-theme-change-box {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    width: 80%;
+}
+
+/***** End Theme settings css *****/
+
+/***** Security settings css *****/
+.if-settings-security-item {
+    list-style: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    & a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+.if-settings-security-item-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
+    gap: 1em;
+    align-items: center;
+    font-size: 1.05em;
+    padding: 0.7em;
+}
+
+.if-settings-security-item:hover {
+    background-color: var(--if-opt-active-col);
+}
+
+/***** Password popup style *****/
+.if-password-popup-box {
+    width: 30em;
+    min-height: 25em;
+}
+
+/***** End Password popup style *****/
+
+/***** End Security settings css *****/
+
+/***** End Body section *****/
+
+
+/***** Responsive css *****/
+@media screen and (max-width: 995px) {
+    .if-settings-container {
+        max-width: unset;
+    }
+
+    .if-settings-side-nav {
+        width: 25vw;
+    }
+
+    .if-settings-body {
+        width: 70vw;
+    }
+
+    .if-img-crop-popup-body{
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .if-crop-img-popup{
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .if-img-crop-popup-body{
+        width: 100vw;
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 676px) {
+    .if-settings-top-nav-box {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .if-settings-container {
+        max-width: unset;
+        padding: 0;
+    }
+
+    .if-settings-side-nav {
+        display: none;
+    }
+
+    .if-settings-body {
+        width: 100vw;
+    }
+
+    .if-settings-body{
+        margin-top: 1em;
+    }
+
+    .if-theme-change-box{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .if-password-popup-box{
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .if-settings-profile-img-box img{
+        width: 160px;
+        height: 160px;
+    }
+
+    .if-settings-security-item-content{
+        padding: 0.7em 0;
+    }
+}
+
+/***** End Responsive css *****/

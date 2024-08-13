@@ -1,0 +1,287 @@
+.if-blog-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.if-blog-section-width {
+    width: 60%;
+}
+
+.if-blog-short-user-det-box {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.if-blog-short-user-det-box img {
+    width: 35px;
+}
+
+.if-blog-btn-box {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    padding: 0.5em 0;
+
+    & button i {
+        font-size: 1.1em;
+    }
+}
+
+/***** User Details Css *****/
+.if-blog-user-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, var(--if-bg-faded-col), transparent);
+    margin-bottom: 1em;
+}
+
+.if-blog-user-sec-content {
+    padding: 2em 0;
+    display: grid;
+    gap: 3.5em;
+}
+
+.if-blog-user-details-box {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+
+    & img {
+        width: 150px;
+    }
+}
+
+.if-blog-user-seggestion-box {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.if-blog-user-seggestion-list {
+    width: 60vw;
+}
+
+/* ****Navigation button css***** */
+.swiper-button-prev,
+.swiper-button-next {
+    background-color: var(--if-bg-color)ff85;
+    border-radius: 5px;
+    backdrop-filter: blur(7px);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 1em;
+    font-weight: bold;
+    color: #000;
+}
+
+.swiper-button-disabled {
+    display: none;
+}
+
+
+/***** End User Details Css *****/
+
+/***** Blog suggestion section css *****/
+.if-blog-more-sugg-item-list {
+    display: grid;
+    position: relative;
+    gap: 1.5em;
+    padding: 0;
+}
+
+.if-blog-sugg-s-more-btn-box {
+    position: absolute;
+    width: 100%;
+    align-self: flex-end;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    background-image: linear-gradient(to bottom, transparent, #0c0c0c05), linear-gradient(to left, transparent, #0000001a, transparent);
+    backdrop-filter: blur(1px);
+
+    & button {
+        border-radius: 20px;
+        padding: 0.1em 0.7em;
+        font-size: 0.9em;
+    }
+}
+
+/***** End Blog suggestion section css *****/
+
+/***** Next blog btn css *****/
+.if-next-blog-show-box {
+    width: 20em;
+    border: 1px solid var(--if-border-ult);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.if-next-blog-show-box-img-sec {
+    display: flex;
+    gap: 1em;
+    padding: 0.4em;
+}
+
+.if-next-blog-show-box-img-sec img {
+    width: 90px;
+    height: 60px;
+    border-radius: 20px;
+}
+
+.if-next-blog-show-box-btn-sec {
+    background-color: var(--if-border-ult);
+    padding: 0.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    gap: 0.1em;
+    transition: gap 0.3s;
+}
+
+.if-next-blog-show-box:hover {
+    filter: brightness(0.9);
+
+    & .if-next-blog-show-box-btn-sec {
+        gap: 0.5em;
+    }
+}
+
+/***** End Next blog btn css *****/
+
+/***** Blog short nav Css *****/
+.if-blog-short-nav {
+    padding: 0.7em 1em;
+    background-color: var(--if-bg-color);
+    box-shadow: 0 1px 7px 0 var(--if-box-shadow-col);
+    position: fixed;
+    bottom: 3.5em;
+    display: flex;
+    border-radius: 30px;
+    gap: 0.7em;
+    z-index: 7;
+    transition: transform 0.3s;
+}
+
+.if-blog-s-nav-btn {
+    border: 1px solid transparent;
+    background-color: #6363630c;
+    outline: none;
+    border-radius: 10px;
+    width: fit-content;
+    height: 35px;
+    padding: 0 0.5em;
+    display: flex;
+    gap: 0.2em;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: inherit;
+
+    & i {
+        font-size: 1.2em;
+        transition: 0.2s;
+    }
+}
+
+.if-blog-s-nav-btn:hover {
+    background-color: #00000017;
+}
+
+.if-blog-s-nav-btn:active i {
+    scale: 0.9;
+}
+
+.if-hide-blog-s-nav {
+    transform: translateY(7.5em);
+}
+
+/***** End Blog short nav Css *****/
+
+.if-blog-footer {
+    width: 100%;
+    padding: 1em;
+    border-top: 1px solid var(--if-border-ult);
+}
+
+
+
+/***** Responsive css *****/
+@media screen and (max-width: 1200px) {
+    .if-blog-section-width {
+        width: 70%;
+    }
+
+    .if-blog-user-seggestion-list {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .if-blog-section-width {
+        width: 80%;
+    }
+
+    .if-blog-user-seggestion-list {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .if-blog-section-width {
+        width: 90%;
+    }
+
+    .if-blog-user-seggestion-list {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .if-blog-section-width {
+        width: 95%;
+    }
+
+    .if-blog-user-seggestion-list {
+        width: 95vw;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .if-blog-user-details-box img {
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .if-blog-user-details-box img {
+        width: 35vw;
+    }
+
+    .if-next-blog-show-box {
+        width: 80vw;
+    }
+
+    .if-next-blog-show-box-img-sec img {
+        width: 25vw;
+        height: auto;
+        aspect-ratio: 3/2;
+    }
+}
+
+/***** End Responsive css *****/

@@ -1,0 +1,55 @@
+.if-pop-input-box {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+    overflow: visible;
+}
+
+.if-pop-input {
+    padding: 0.5em 0.7em;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--if-border-ult);
+    transition: border 0.2s;
+    background-color: transparent;
+    color: inherit;
+}
+
+.if-pop-input:focus {
+    border-bottom: 1px solid var(--if-col-blue);
+}
+
+.if-pop-input-placeholder {
+    position: absolute;
+    width: 100%;
+    padding: 0 0.7em;
+    cursor: text;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.if-pop-input-placeholder::selection {
+    background-color: transparent;
+    color: inherit;
+}
+
+.if-input-focused-pholder {
+    transform: translate(-10px, -25px);
+    font-size: 0.85em;
+    color: var(--if-col-blue);
+}
+
+.if-eye-btn {
+    position: absolute;
+    justify-self: end;
+    padding: 0.1em 0.5em;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
