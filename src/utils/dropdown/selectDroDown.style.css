@@ -1,0 +1,45 @@
+.if-add-dropdown {
+    display: grid;
+    padding: 0.6em;
+    border-radius: 7px;
+    gap: 0.3em;
+    box-shadow: 1px 2px 8px 0 var(--if-box-shadow-col);
+    animation: fieldBoxAnim 0.4s ease 1;
+    width: fit-content;
+    position: absolute;
+    z-index: 12;
+    background-color: var(--if-bg-color);
+
+    & button {
+        width: 100%;
+        gap: 0.5em;
+    }
+}
+
+@keyframes fieldBoxAnim {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.if-add-dropdown-close {
+    animation: fieldBoxCloseAnim 0.3s 1;
+}
+
+@keyframes fieldBoxCloseAnim {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+}

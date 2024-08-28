@@ -1,0 +1,11 @@
+.if-errorpage-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.if-errorpage-img-box img{
+    width: 350px;
+}

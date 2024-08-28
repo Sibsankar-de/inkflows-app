@@ -1,0 +1,46 @@
+/***** Searchbar page css *****/
+.if-searchbar-page {
+    position: fixed;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    background-color: var(--if-bg-color);
+    width: 100vw;
+    height: 100vh;
+    padding: 1em 0.5em;
+}
+
+.if-searchbar-page-searchbar-box {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
+    gap: 0.7em;
+}
+
+.if-searchbar-page-search-box {
+    display: grid;
+}
+
+/***** End Searchbar page css *****/
+
+/***** Search page css *****/
+.if-search-result-content-box{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-top: 3em;
+    margin-bottom: 4em;
+}
+
+/* ******Profile Search item****** */
+.if-profile-search-item {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+}
+
+.if-profile-search-item-img-box img{
+    width: 120px;
+}
+
+/***** End Search page css *****/

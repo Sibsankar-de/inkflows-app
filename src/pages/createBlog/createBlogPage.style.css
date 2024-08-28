@@ -1,0 +1,119 @@
+.if-create-blog-page-container {
+    min-height: calc(100vh - 2em);
+    display: grid;
+    grid-template-rows: max-content;
+    margin-top: 2em !important;
+}
+
+.if-create-blog-header-box {
+    margin-bottom: 2em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    & h5 {
+        margin-bottom: 0;
+    }
+}
+
+.if-blog-editor-container {
+    padding: 2em;
+}
+
+.if-blog-edit-p-btm-btn-box {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 1em;
+    align-self: end;
+}
+
+.if-generated-thumbnail {
+    width: 280px;
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4em;
+    color: #181818;
+}
+
+/***** Preview page stylesheet *****/
+.if-blog-preview-container {
+    min-height: calc(100vh - 58px - 2em);
+    display: grid;
+    grid-template-rows: max-content;
+    width: 60%;
+
+}
+
+/***** End Preview page stylesheet *****/
+
+/***** Publish blog page css *****/
+.if-blog-publish-container {
+    min-height: calc(100vh - 58px - 2em);
+    display: grid;
+    grid-template-rows: max-content;
+    gap: 2em;
+}
+
+/***** End Publish blog page css *****/
+
+/***** Responsive css *****/
+
+@media screen and (max-width: 1200px) {
+    .if-blog-preview-container {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .if-blog-preview-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 995px) {
+    .if-create-blog-page-container {
+        max-width: unset !important;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .if-blog-preview-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .if-blog-preview-container {
+        max-width: unset;
+        width: 95%;
+    }
+
+    .if-blog-preview-container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 575px) {
+    .if-blog-editor-container {
+        padding: 1em;
+    }
+}
+
+@media (max-width: 475px) {
+    .if-blog-editor-container {
+        padding: 1em 0.5em;
+    }
+}
+
+@media (max-width: 390px) {
+    .if-blog-edit-p-btm-btn-box {
+        flex-direction: column;
+        align-items: end;
+        gap: 0.5em;
+    }
+}
+
+/***** End Responsive css *****/

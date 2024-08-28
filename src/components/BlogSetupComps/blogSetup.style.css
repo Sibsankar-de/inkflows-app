@@ -1,0 +1,122 @@
+.if-blog-set-up-box{
+    display: grid;
+    gap: 3em;
+}
+
+.if-add-thumbnail-box {
+    display: flex;
+    flex-flow: wrap;
+    gap: 1.5em;
+}
+
+/***** Thumbnail box stylesheet *****/
+.if-thumbnail-uploader-box {
+    width: 160px;
+    height: 120px;
+    background-color: #0000001f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 2.5em;
+    color: #545454;
+}
+
+.if-uploaded-thumbnail-img-box img {
+    width: 160px;
+    height: 120px;
+    border-radius: 5px;
+    object-fit: cover;
+    transition: padding 0.2s;
+}
+
+.if-active-thumbnail {
+    padding: 0.5em;
+    box-shadow: 0 0 4px 0 #2c4b54d7;
+}
+
+
+.if-uploaded-thumbnail-label{
+    display: grid;
+}
+
+.if-thumbnail-opt-tic{
+    position: absolute;
+    justify-self: end;
+    background-color: #2c4b54d7;
+    padding: 0.1em 0.4em;
+    border-radius: 0 5px 0 5px;
+    color: #cccccc;
+
+}
+
+/***** End Thumbnail box stylesheet *****/
+
+/***** Tag box css *****/
+.if-tag-textarea {
+    display: flex;
+    flex-flow: wrap;
+    padding: 0;
+    margin-bottom: 0;
+    width: 100%;
+    gap: 1em;
+    min-height: 5em;
+}
+
+.if-tag-item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: #c3ddf6;
+    padding: 0.1em 0.5em;
+    border-radius: 20px;
+    gap: 0.5em;
+    color: #000;
+}
+
+.if-tag-para{
+    max-width: 20em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.if-tag-input{
+    border: none;
+    width: 35ch;
+    outline: none;
+    background-color: transparent;
+    overflow-x: scroll;
+    color: inherit;
+}
+
+/***** End Tag box css *****/
+
+
+/***** Responsive css *****/
+
+@media screen and (max-width: 425px) {
+    .if-tag-para{
+        max-width: 80vw;
+    }
+    
+    .if-tag-input{
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .if-thumbnail-uploader-box {
+        width: 80px;
+        height: 60px;
+    }
+
+    .if-uploaded-thumbnail-img-box img {
+        width: 200px;
+        height: 150px;
+    }
+}
+
+/***** End Responsive css *****/

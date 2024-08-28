@@ -1,0 +1,113 @@
+.if-auth-page-container {
+    display: flex;
+    gap: 3em;
+}
+
+.if-auth-page-vector-img-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.if-auth-page-vector-img-box img {
+    width: 600px;
+}
+
+.if-auth-page-work-section {
+    width: 40%;
+}
+
+.if-or-flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.if-or-flag::after {
+    content: "";
+    width: 100%;
+    display: block;
+    height: 1px;
+    background-color: #dadada4b;
+}
+
+.if-or-flag::before {
+    content: "OR";
+    width: fit-content;
+    height: fit-content;
+    display: block;
+    font-size: 0.65em;
+    background-color: var(--if-border-ult);
+    padding: 0.1em 0.5em;
+    border-radius: 20px;
+    position: absolute;
+}
+
+/***** Login page css *****/
+.if-login-btn {
+    background-color: #a9d3fd;
+    border-radius: 20px;
+    color: #000;
+}
+
+.if-login-page-lg-btn {
+    width: 100%;
+    border-radius: 30px;
+    justify-content: center;
+    gap: 1em;
+}
+
+.if-auth-email-reg-btn {
+    background-color: #a9d3fd;
+}
+
+/***** End Login page css *****/
+
+
+/***** Responsive css *****/
+@media screen and (max-width: 1199px) {
+    .if-auth-page-vector-img-box img {
+        width: 500px;
+    }
+
+}
+
+@media screen and (max-width: 995px) {
+    .if-auth-page-container {
+        max-width: unset;
+    }
+
+    .if-auth-page-vector-img-box img {
+        width: 45vw;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .if-auth-page-container {
+        justify-content: center;
+    }
+
+    .if-auth-page-img-sec {
+        display: none;
+    }
+
+    .if-auth-page-work-section {
+        width: 30em;
+    }
+
+    .if-auth-page-header{
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 575px) {
+    .if-auth-page-work-section {
+        width: 95vw;
+    }
+
+}
+
+/***** End Responsive css *****/

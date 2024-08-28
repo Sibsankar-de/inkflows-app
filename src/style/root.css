@@ -1,0 +1,41 @@
+:root {
+    --if-blog-img-width: 720px;
+    --if-blog-img-height: 405px;
+}
+
+/* #### Color Root #### */
+
+:root {
+    --if-text-color: #212529;
+    --if-bg-color: #ffff;
+    --if-border-lt: #b5b5b5;
+    --if-border-ult: #dadada;
+    --if-col-blue: #4e86f4;
+    --if-col-ult: #dadada88;
+    --if-box-shadow-col: #6c6c6c61;
+    --if-secondary-col: #e3e3e3;
+    --if-nav-btn-col: #525252;
+    --if-col-lt: #727272;
+    --if-opt-active-col: #7e7e7e3b;
+    --if-bg-faded-col: #f1f1f1bb;
+}
+
+.dark-theme {
+    --if-bg-color: #0e1318;
+    --if-text-color: #dbdbdb;
+    --if-border-ult: #282828;
+    --if-border-lt: #363636;
+    --if-secondary-col: #303030;
+    --if-nav-btn-col: #b3b3b3;
+    --if-bg-faded-col: #f1f1f105;
+}
+
+
+/***** Responsive css *****/
+@media screen and (max-width: 860px) {
+    :root {
+        --if-blog-img-width: 85vw;
+    }
+}
+
+/***** End Responsive css *****/

@@ -1,0 +1,142 @@
+/***** Blog item horizontal css *****/
+.if-blog-item-horizontal {
+    display: flex;
+    gap: 2em;
+}
+
+.if-blog-item-horz-img-box img {
+    /* ratio 3:2 */
+    width: 210px;
+    height: 140px;
+    object-fit: cover;
+}
+
+.if-blog-item-horz-details-box {
+    display: grid;
+    grid-template-rows: max-content;
+    gap: 0.5em;
+}
+
+/***** End Blog item horizontal css *****/
+
+/***** Blog Item vertical css *****/
+
+.if-blog-item-vertical {
+    width: 300px;
+}
+
+.if-blog-item-vert-img-box {
+    overflow: hidden;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+.if-blog-item-vert-img-box img {
+    /* ratio 3:2 */
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    transition: scale 0.2s;
+}
+
+.if-blog-item-vert-img-box img:hover {
+    scale: 1.1;
+}
+
+/***** End Blog Item vertical css *****/
+
+
+/***** Responsive css *****/
+@media screen and (max-width: 1100px) {
+    .if-blog-item-vertical {
+        width: 270px;
+    }
+
+    .if-blog-item-vert-img-box img {
+        /* ratio 3:2 */
+        width: 270px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .if-blog-item-vertical {
+        width: 240px;
+    }
+
+    .if-blog-item-vert-img-box img {
+        /* ratio 3:2 */
+        width: 240px;
+        height: 160px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .if-blog-item-vertical {
+        width: 210px;
+    }
+
+    .if-blog-item-vert-img-box img {
+        /* ratio 3:2 */
+        width: 210px;
+        height: auto;
+        aspect-ratio: 3/2;
+    }
+}
+
+
+@media screen and (max-width: 575px) {
+    .if-blog-item-horz-img-box img {
+        width: 180px;
+        height: 120px;
+    }
+
+    .if-blog-item-horizontal {
+        gap: 1em;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .if-blog-item-horz-img-box img {
+        width: 150px;
+        height: 100px;
+    }
+
+    .if-blog-item-vertical {
+        width: 180px;
+    }
+
+    .if-blog-item-vert-img-box img {
+        /* ratio 3:2 */
+        width: 180px;
+        height: auto;
+        aspect-ratio: 3/2;
+    }
+
+    .if-blog-item-time-p-btm{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .if-blog-item-horz-img-box img {
+        width: 37vw;
+        height: auto;
+        aspect-ratio: 3/2;
+    }
+
+    .if-blog-item-vertical {
+        width: 37vw;
+    }
+
+    .if-blog-item-vert-img-box img {
+        /* ratio 3:2 */
+        width: 37vw;
+        height: auto;
+        aspect-ratio: 3/2;
+    }
+}
+
+/***** End Responsive css *****/

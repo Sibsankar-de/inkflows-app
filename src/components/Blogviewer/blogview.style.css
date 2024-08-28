@@ -1,0 +1,105 @@
+.if-blog-title-box {
+    width: 100%;
+}
+
+.if-blog-content-box {
+    display: grid;
+    gap: 2em;
+    margin-bottom: 5em;
+    width: 100%;
+}
+
+/***** Text viewer style *****/
+.if-blog-view-text-content blockquote {
+    border-left: 5px solid var(--if-col-blue);
+    background-color: #a1a1a12e;
+    padding: 1em;
+    padding-left: 2em;
+}
+
+.if-blog-view-text-content a{
+    color: var(--if-col-blue);
+    text-decoration: none;
+}
+
+/***** End Text viewer style *****/
+
+/***** Image viewer style *****/
+.if-blog-view-img-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.if-blog-view-img-box img {
+    max-width: var(--if-blog-img-width);
+    max-height: var(--if-blog-img-height);
+    /* min-width: 300px;
+    min-height: 300px; */
+
+}
+
+.if-img-short-para {
+    max-width: calc(var(--if-blog-img-width) - 2em);
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+    color: #424242;
+}
+
+/***** End Image viewer style *****/
+
+/***** Code block stylesheet *****/
+.if-blog-view-code-block-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.if-blog-view-code-block-content {
+    width: 100%;
+}
+
+.if-code-blog-head-bar {
+    display: grid;
+    grid-auto-flow: column;
+    background-color: var(--if-secondary-col);
+    padding: 0.2em 1em;
+    border-radius: 10px 10px 0 0;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.if-blog-view-code-block pre {
+    margin: 0 !important;
+    border-radius: 0 0 10px 10px !important;
+    font-size: 1.1em;
+}
+
+/***** End Code block stylesheet *****/
+
+/***** Video viewer stylesheet *****/
+.if-video-viewer-container {
+    display: flex;
+    justify-content: center;
+}
+
+.if-blog-view-video-player {
+    width: var(--if-blog-img-width);
+    height: auto;
+    aspect-ratio: 16/9;
+}
+
+
+
+/***** Responsive css *****/
+
+@media screen and (max-width: 768px) {
+    .if-blog-view-code-block-content {
+        width: 95vw;
+    }
+}
+
+/***** End Responsive css *****/

@@ -1,0 +1,126 @@
+.container {
+    margin-top: 6em;
+}
+
+.if-home-content-box {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.if-bolg-items-container {
+    padding-left: 0;
+}
+
+/* ###### Blog item styles ####### */
+.if-blog-item {
+    list-style: none;
+    display: flex;
+    width: 60vw;
+    gap: 1em;
+    border-bottom: 1px solid var(--if-border-ult);
+    padding: 1.5em 0.7em;
+}
+
+.if-blog-item:last-child {
+    border-bottom: 0;
+}
+
+.if-blog-item-img-box img {
+    /* image ratio 4:3  */
+    width: 200px;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.if-blog-details-box {
+    display: grid;
+    gap: 0.5em;
+    grid-template-rows: max-content;
+}
+
+.if-blog-upload-des-box {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.if-home-cont-user-btn-box {
+    display: flex;
+    gap: 0.5em;
+}
+
+/***** Responsive css *****/
+@media screen and (max-width: 1500px) {
+    .if-blog-item {
+        width: 57em;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .if-blog-item {
+        width: 84vw;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .if-blog-item {
+        width: 90vw;
+    }
+}
+
+@media screen and (min-width: 676px) {
+    .if-home-cont-user-btn-box-und-img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .if-blog-item {
+        width: 95vw;
+    }
+
+    .if-blog-item-img-box img {
+        /* image ratio 4:3  */
+        width: 160px;
+        height: 120px;
+    }
+
+    .if-blog-item-img-box {
+        display: grid;
+        gap: 0.5em;
+    }
+
+    .if-home-cont-user-btn-box-und-img {
+        display: flex;
+        gap: 0.5em;
+        align-self: flex-end;
+        justify-self: center;
+    }
+
+    .if-home-cont-user-btn-box {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .if-blog-item {
+        width: 100vw;
+    }
+
+    .if-blog-item-img-box img {
+        /* image ratio 4:3  */
+        width: 120px;
+        height: 90px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .if-blog-item-img-box img {
+        /* image ratio 4:3  */
+        width: 80px;
+        height: 60px;
+    }
+}
+
+/***** End Responsive css *****/
