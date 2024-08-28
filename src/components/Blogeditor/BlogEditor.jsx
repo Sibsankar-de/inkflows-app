@@ -113,7 +113,6 @@ export const BlogEditor = ({ data, onChange }) => {
         onChange({ contentList, blogTitle })
     }, [contentList, blogTitle])
 
-
     return (
         <div>
             <section className='if-blog-edit-container'>
