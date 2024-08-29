@@ -192,7 +192,7 @@ export const SearchBox = ({ openState, onClose, input, onWrite, onSearch }) => {
                         <ul className='p-0 if-recom-search-container'>
                             {
                                 recomList?.map((item, index) => {
-                                    return index < 5 && <Link className='if-url-normal' to={``} key={index}><li className='if-recom-search-line'>{item}</li></Link>
+                                    return index < 5 && <Link className='if-url-normal' to={`/search?q=${decodeURI(item)}`} onClick={() => onClose()} key={index}><li className='if-recom-search-line'>{item}</li></Link>
                                 })
                             }
 
