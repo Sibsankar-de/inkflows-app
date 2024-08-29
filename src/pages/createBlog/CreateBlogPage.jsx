@@ -60,7 +60,7 @@ export const CreateBlogPage = () => {
                 } catch (error) {
                     setSaveLoader(false)
                     toast.error("Unable to save. Try again")
-                    console.log(error);
+                    // // console.log(error);
                 }
             }
         }
@@ -90,7 +90,7 @@ export const CreateBlogPage = () => {
                         }
                     })
             } catch (error) {
-                console.log(error);
+                // // console.log(error);
             }
 
             return imageUrl
@@ -127,7 +127,7 @@ export const CreateBlogPage = () => {
         } catch (error) {
             setSaveLoader(false)
             toast.error("Failed to save blog")
-            console.log(error);
+            // // console.log(error);
         }
     }
 
@@ -172,7 +172,7 @@ export const CreateBlogPage = () => {
                     setSaveLoader(false)
                 })
         } catch (error) {
-            console.log(error);
+            // // console.log(error);
             setSaveLoader(false)
             if (error?.response?.status === 401) toast.error('You are not authorised to edit this blog')
         }

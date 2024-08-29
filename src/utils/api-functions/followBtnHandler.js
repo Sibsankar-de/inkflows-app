@@ -11,7 +11,7 @@ export const handleFollow = async (userId, userName = '') => {
             })
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         loading = false
     }
 
@@ -28,7 +28,7 @@ export const handleUnFollow = async (userId, userName = '') => {
             })
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         loading = false
     }
 }

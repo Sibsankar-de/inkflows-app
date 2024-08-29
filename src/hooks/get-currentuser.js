@@ -8,9 +8,11 @@ export const useCurrentUser = () => {
             try {
                 axios.get('/user/current-user')
                     .then(res => setUserData(res.data?.data))
-                    .catch(err => console.log((err)))
+                    .catch(err => {
+                        // console.log((err))
+                    })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         fetchCurrentUser()

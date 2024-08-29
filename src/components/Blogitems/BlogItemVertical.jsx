@@ -13,7 +13,7 @@ export const BlogItemVertical = ({ data }) => {
                         setBlogCreator(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         if (data?.creator) {

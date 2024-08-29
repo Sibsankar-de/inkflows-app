@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
                         }, 600)
                     })
             } catch (error) {
-                console.log("Auth Error", error);
+                // console.log("Auth Error", error);
                 setTimeout(() => {
                     setIsAuthenticated(false)
                 }, 600)

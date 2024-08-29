@@ -36,7 +36,7 @@ export const SearchPage = () => {
                     .catch(err => { })
                     .finally(() => setProgress(false))
             } catch (error) {
-                console.log(error);
+                // console.log(error);
 
             }
         }

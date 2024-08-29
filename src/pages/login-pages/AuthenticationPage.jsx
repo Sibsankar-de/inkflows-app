@@ -43,7 +43,7 @@ const LoginBox = () => {
                         window.location.reload()
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 if (error.response?.status === 403) toast.error("User does not exist")
                 if (error.response?.status === 402) toast.error("Incorrect password")
                 if (error.response?.status === 400) toast.error("Unable to login")
@@ -85,7 +85,7 @@ const LoginBox = () => {
                         })
                 })
                 .catch(err => {
-                    console.log(err)
+                    // console.log(err)
                     toast.error("Something went wrong")
                     setGoogleLoader(false)
                 })
@@ -172,7 +172,7 @@ const RegistrationBox = () => {
                     userName,
                     authBy: "email"
                 }
-                console.log(postData);
+                // console.log(postData);
 
                 setLoading(true)
                 await axios.post('/user/create-user', postData)
@@ -185,13 +185,13 @@ const RegistrationBox = () => {
                                     window.location.reload()
                                 })
                         } catch (error) {
-                            console.log(error);
+                            // console.log(error);
                         }
                     })
             } catch (error) {
                 setLoading(false)
                 toast.error("Unable to create account")
-                console.log(error);
+                // console.log(error);
 
             }
         }

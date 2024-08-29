@@ -21,7 +21,7 @@ import { Tooltip } from 'react-tooltip'
 import { ProfileLoadBoxSmall } from '../../components/LoadBoxes/ProfileLoadBox'
 
 export const BlogPage = () => {
-    
+
     const suggestionSlideOptions = {
         // slidesPerView: 3,
         spaceBetween: 20,
@@ -67,7 +67,7 @@ export const BlogPage = () => {
                         setBlog(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 navigate("*")
             }
         }
@@ -85,7 +85,7 @@ export const BlogPage = () => {
                 await axios.get(`/user/get-by-id/${blog?.creator}`)
                     .then(res => setBlogCreator(res?.data?.data))
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
 
@@ -97,9 +97,11 @@ export const BlogPage = () => {
         const addViews = async () => {
             try {
                 await axios.post('/blog/add-views', { blogId })
-                    .then(() => console.log("Views added"))
+                    .then(() => {
+                        // console.log("Views added")
+                    })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         // adds views 9sec after view the blog
@@ -116,7 +118,7 @@ export const BlogPage = () => {
                 await axios.get(`/blog/check-like/${blogId}`)
                     .then((res) => setIsLiked(res?.data?.data?.isLiked))
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
 
@@ -155,7 +157,7 @@ export const BlogPage = () => {
                         }
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
 
             }
         }
@@ -187,7 +189,7 @@ export const BlogPage = () => {
                     await axios.get(`/user/check-follow/${blogCreator?._id}`)
                         .then(res => setIsFollowing(res?.data?.data?.isFollowed))
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
                 }
             }
         }
@@ -218,7 +220,7 @@ export const BlogPage = () => {
                         setCreatorBlogList(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         if (blogCreator) fetchBlogList()
@@ -243,7 +245,7 @@ export const BlogPage = () => {
                         setSuggBlogList(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
 
@@ -266,9 +268,9 @@ export const BlogPage = () => {
 
     // handle page title
     useEffect(() => {
-        document.title = blog?`${blog?.blogTitle} - ${blogCreator?.fullName}`:'Loading...'
+        document.title = blog ? `${blog?.blogTitle} - ${blogCreator?.fullName}` : 'Loading...'
     }, [blog, blogCreator])
-    
+
 
     return (
         <div className='container if-blog-container'>

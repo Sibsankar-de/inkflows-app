@@ -21,7 +21,7 @@ export const PublishBlogPage = () => {
                         setBlog(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 if (error?.response?.status === 402 || error?.response?.status === 500) navigate('*')
             }
         }
@@ -60,7 +60,7 @@ export const PublishBlogPage = () => {
 
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
 
@@ -76,7 +76,7 @@ export const PublishBlogPage = () => {
         try {
             await axios.patch('/blog/update-tnail', { blogId, thumbnail })
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             if (error?.response?.status === 401) toast.error('You are not authorised to edit this blog')
         }
 
@@ -84,7 +84,7 @@ export const PublishBlogPage = () => {
         try {
             await axios.patch('/blog/update-tags', { blogId, tagList: blogSetupData?.tagList })
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             if (error?.response?.status === 401) toast.error('You are not authorised to edit this blog')
         }
 
@@ -104,7 +104,7 @@ export const PublishBlogPage = () => {
                         navigate('/home')
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 setPublishLoader(false)
                 toast.error('Unable to publish your blog')
             }
@@ -127,7 +127,7 @@ export const PublishBlogPage = () => {
                         toast.success("Blog saved as draft")
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 setDraftLoader(false)
             }
         }

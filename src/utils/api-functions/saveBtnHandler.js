@@ -8,7 +8,7 @@ export const handleSaveBlog = async (blogId) => {
                 toast.success("Blog added to saved list")
             })
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         error?.response?.status === 402 && toast.warn("Blog has already saved")
     }
 }
@@ -20,7 +20,7 @@ export const handleRemoveSaveBlog = async (blogId) => {
                 toast.success("Blog removed from saved list")
             })
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         error?.response?.status === 402 && toast.warn("Blog already removed")
     }
 }

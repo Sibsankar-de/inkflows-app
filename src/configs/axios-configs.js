@@ -18,7 +18,9 @@ axiosInstance.interceptors.response.use(
                 await axios.get(`${baseUrl}/user/refresh-token`, {}, {
                     withCredentials: true,
                 })
-                    .catch(err => console.log(err))
+                    .catch(err => {
+                        // console.log(err)
+                    })
 
                 return axiosInstance(originalRequest);
             } catch (e) {
@@ -28,7 +30,7 @@ axiosInstance.interceptors.response.use(
             }
         }
         else if (!error.response) {
-            console.log("Server error - ", error)
+            // console.log("Server error - ", error)
             toast.error("Connection with server failed ")
         }
         return Promise.reject(error);

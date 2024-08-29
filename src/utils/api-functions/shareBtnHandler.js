@@ -9,7 +9,7 @@ export const handleShare = async (title, text, url) => {
                 url
             })
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     } else {
         toast.warn("You are using an unsupported browser")

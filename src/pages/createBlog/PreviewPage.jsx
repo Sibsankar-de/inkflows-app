@@ -18,7 +18,7 @@ export const PreviewPage = () => {
                         setBlog(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 if (error?.response?.status === 402 || error?.response?.status === 500) navigate('*')
             }
         }

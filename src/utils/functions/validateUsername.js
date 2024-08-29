@@ -50,7 +50,7 @@ export async function validateUsername(username) {
                 }
             })
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 
     let isUserValidate = true

@@ -63,7 +63,7 @@ export const Profile = () => {
                     })
             } catch (error) {
                 navigate('*')
-                console.log(error);
+                // console.log(error);
             }
         }
         fetchUser()
@@ -78,7 +78,7 @@ export const Profile = () => {
                     await axios.get(`/user/check-follow/${userData?._id}`)
                         .then(res => setIsFollowing(res?.data?.data?.isFollowed))
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
                 }
             }
         }
@@ -99,7 +99,7 @@ export const Profile = () => {
 
         } catch (error) {
             setFollowLoader(false)
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -115,7 +115,7 @@ export const Profile = () => {
 
         } catch (error) {
             setFollowLoader(false)
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -140,7 +140,7 @@ export const Profile = () => {
                         setBlogNum(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         if (userData?._id) fetchBlogNum()
@@ -271,7 +271,7 @@ export const UploadSection = () => {
                             setBlogList(res?.data?.data)
                         })
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
                 }
             }
         }
@@ -331,7 +331,7 @@ export const DraftedBlogSection = () => {
                             setBlogList(res?.data?.data)
                         })
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
                 }
             }
         }
@@ -392,7 +392,7 @@ const BlogItem = ({ data }) => {
                         }
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
 
             }
         }

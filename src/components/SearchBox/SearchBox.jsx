@@ -54,7 +54,7 @@ export const SearchBox = ({ openState, onClose, input, onWrite, onSearch }) => {
                         setTagList(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         fetchTagList()
@@ -70,7 +70,7 @@ export const SearchBox = ({ openState, onClose, input, onWrite, onSearch }) => {
                         setUserNameList(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
 
             }
         }
@@ -149,7 +149,7 @@ export const SearchBox = ({ openState, onClose, input, onWrite, onSearch }) => {
                     setRecomList(res?.data?.data?.recomList);
                 })
                 .catch(err => {
-                    console.log(err)
+                    // console.log(err)
                 })
         }
 
@@ -243,7 +243,7 @@ const SearchLine = ({ writeButton = true, text, history = false, onWrite, onSear
                     await clearListFromDb()
                     await addListToDb(tagObjList)
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
 
                 }
             }

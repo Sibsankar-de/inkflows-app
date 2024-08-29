@@ -45,7 +45,7 @@ export const SavedBlogPage = () => {
                         setBlogList(res?.data?.data)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
         fetchList()

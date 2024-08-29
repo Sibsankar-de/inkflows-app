@@ -142,7 +142,7 @@ export const ProfileSettings = () => {
                         }
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 setIsUserAvailable(false)
             }
         }
@@ -171,7 +171,7 @@ export const ProfileSettings = () => {
                 }
             })
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -188,7 +188,7 @@ export const ProfileSettings = () => {
                         setSaveLoader(false)
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 setSaveLoader(false)
             }
         }
@@ -350,7 +350,7 @@ export const SecuritySettings = () => {
                     setLogOutLoader(false)
                 })
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             toast.error("Unable to logout ")
             setLogOutLoader(false)
         }
@@ -437,7 +437,7 @@ const PasswordChangePopup = ({ activeState, onClose }) => {
                         toast.success("Password updated successfully")
                     })
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 setLoader(false)
                 if (error?.response?.status === 402) toast.error("Current password is not correct")
             }
