@@ -85,7 +85,7 @@ const LoginBox = () => {
                         })
                 })
                 .catch(err => {
-                    console.log(err)
+                    // console.log(err)
                     toast.error("Something went wrong")
                     setGoogleLoader(false)
                 })
@@ -185,13 +185,13 @@ const RegistrationBox = () => {
                                     window.location.reload()
                                 })
                         } catch (error) {
-                            console.log(error);
+                            // console.log(error);
                         }
                     })
             } catch (error) {
                 setLoading(false)
                 toast.error("Unable to create account")
-                console.log(error);
+                // console.log(error);
 
             }
         }
