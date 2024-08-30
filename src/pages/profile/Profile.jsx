@@ -148,7 +148,7 @@ export const Profile = () => {
 
     // handle page title
     useEffect(() => {
-        document.title = userData?`Inkflows profile - ${userData?.fullName}`:"Loading..."
+        document.title = userData ? `Inkflows profile - ${userData?.fullName}` : "Loading..."
     }, [userData])
 
     return (
@@ -160,7 +160,9 @@ export const Profile = () => {
                             <div>
                                 <img src={userData?.avatar || profImg} alt="" />
                             </div>
-                            <div className='if-profile-edit-btn' onClick={() => navigate('/settings/profile')}><i className="ri-pencil-line"></i></div>
+                            <CurrentUserContainer userName={userName}>
+                                <div className='if-profile-edit-btn' onClick={() => navigate('/settings/profile')}><i className="ri-pencil-line"></i></div>
+                            </CurrentUserContainer>
                         </div>
                         {userData && <div className='if-profile-user-details-box'>
                             <div className='if-profile-user-det-box-name-sec'>
@@ -410,7 +412,7 @@ const BlogItem = ({ data }) => {
     }
 
     // share handler
-    const shareBtnHandler = ()=>{
+    const shareBtnHandler = () => {
         handleShare(data?.blogTitle, "", `${window.location.origin}/blog/${data?._id}`)
     }
 
