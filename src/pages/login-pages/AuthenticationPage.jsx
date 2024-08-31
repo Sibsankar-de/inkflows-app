@@ -32,7 +32,8 @@ const LoginBox = () => {
 
     // Handle login
     const [loader, setLoader] = useState(false)
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e?.preventDefault();
         if (input.email && input.password) {
             setLoader(true)
             try {
@@ -160,7 +161,7 @@ const RegistrationBox = () => {
                         emailname = `${emailname}${i}`
                     }
                 }
-                
+
                 return emailname
             }
 
