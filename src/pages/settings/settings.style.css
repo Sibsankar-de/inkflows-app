@@ -286,7 +286,7 @@
 @media screen and (max-width: 768px) {
     .if-crop-img-popup {
         width: 100vw;
-        height: calc(100vh - env(safe-area-inset-bottom));
+        height: 100svh;
         position: absolute;
         overflow-y: auto;
         top: 0;
@@ -331,7 +331,7 @@
 @media screen and (max-width: 575px) {
     .if-password-popup-box {
         width: 100vw;
-        height: calc(100vh - env(safe-area-inset-bottom));
+        height: 100svh;
         position: fixed;
         top: 0;
         position: absolute;
