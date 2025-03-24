@@ -5,7 +5,6 @@
     border: none;
     box-shadow: 2px 3px 8px 0 var(--if-box-shadow-col);
     transition: 0.2s;
-    overflow: hidden;
     height: 3em;
     position: sticky;
     z-index: 5;
