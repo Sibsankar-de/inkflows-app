@@ -137,7 +137,10 @@ export const PublishBlogPage = () => {
     return (
         <div className='container if-blog-publish-container'>
             <div className='if-blog-preview-btn-box'>
-                <h6 className='mb-0'>View your blog</h6>
+                <div className='d-flex align-items-center gap-2'>
+                    <Link className='if-url-normal' to={`/create/new?edit=true&editId=${blogId}`}><div className='if-preview-btn'><i class="ri-arrow-left-s-line"></i> Edit</div></Link>
+                    <h6 className='mb-0'>View your blog</h6>
+                </div>
                 <Link className='if-url-normal' to={`/create/preview/${blogId}`} target='_blank'><div className='if-preview-btn'>Show preview <i class="ri-arrow-right-s-line"></i></div></Link>
             </div>
             <div>

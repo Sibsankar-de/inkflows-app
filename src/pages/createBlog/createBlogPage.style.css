@@ -61,14 +61,14 @@
     display: flex;
     justify-content: space-between;
     background-color: #c3ddf678;
-    padding: 0.4em 1em;
+    padding: 0.4em;
     align-items: center;
     border-radius: 10px;
 }
 
 .if-preview-btn{
     background-color: var(--if-bg-color);
-    padding: 0.3em 1em;
+    padding: 0.3em 0.6em;
     border-radius: 10px;
 }
 

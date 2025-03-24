@@ -66,6 +66,10 @@
     filter: brightness(0.85);
 }
 
+.if-btn-2:disabled {
+    filter: brightness(0.5);
+}
+
 .if-btn-green {
     background-color: #5dbea3;
     color: #ffff;
