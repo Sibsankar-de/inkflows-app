@@ -17,31 +17,6 @@ import { handleShare } from '../../utils/api-functions/shareBtnHandler'
 export const Profile = () => {
     const navigate = useNavigate()
 
-    // controls Navbar position 
-    const [navPosition, setNavPosition] = useState('absolute')
-    const [navTop, setNavTop] = useState('unset');
-    const navStyle = { position: navPosition, top: navTop }
-    const navRef = useRef(null)
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY
-            const userBoxElem = document.getElementsByClassName("if-profile-user-details-upper-sec")
-            if (userBoxElem) {
-                const topHeight = userBoxElem[0]?.clientHeight
-                if (scrollPosition >= topHeight + 35) {
-                    setNavPosition('fixed')
-                    setNavTop('60px')
-                }
-                else {
-                    setNavPosition('absolute')
-                    setNavTop('unset')
-                }
-            }
-        }
-        document.addEventListener('scroll', handleScroll)
-        return () => { document.removeEventListener('scroll', handleScroll) }
-    }, [])
-
     // fetch current user
     const currentUser = useCurrentUser()
 
@@ -218,32 +193,41 @@ export const Profile = () => {
 
                 </section>
                 <section>
-                    <div className='if-profile-nav-box'>
-                        <div className='if-profile-nav-bar' style={navStyle} ref={navRef}>
+                    <div className='if-profile-nav-bar'>
+                        <div className='if-profile-nav-bar-item'>
+                            <NavLink to="uploads">
+                                <button className='if-profile-nav-btn'>
+                                    <div className='d-flex align-items-center gap-2'>
+                                        <div>Uploads</div>
+                                        {blogNum?.publicBlogCount > 0 && <div className='if-prof-nav-upload-count-box'>{blogNum?.publicBlogCount}</div>}
+                                    </div>
+                                    <div className='if-profile-nav-opt-bottom'></div>
+                                </button>
+                            </NavLink>
+                        </div>
+                        <CurrentUserContainer userName={userName}>
                             <div className='if-profile-nav-bar-item'>
-                                <NavLink to="uploads">
+                                <NavLink to="drafts">
                                     <button className='if-profile-nav-btn'>
                                         <div className='d-flex align-items-center gap-2'>
-                                            <div>Uploads</div>
-                                            {blogNum?.publicBlogCount > 0 && <div className='if-prof-nav-upload-count-box'>{blogNum?.publicBlogCount}</div>}
+                                            <div className='if-text-no-break'>Drafted blogs</div>
+                                            {blogNum?.draftBlogCount > 0 && <div className='if-prof-nav-upload-count-box'>{blogNum?.draftBlogCount}</div>}
                                         </div>
                                         <div className='if-profile-nav-opt-bottom'></div>
                                     </button>
                                 </NavLink>
                             </div>
-                            <CurrentUserContainer userName={userName}>
-                                <div className='if-profile-nav-bar-item'>
-                                    <NavLink to="drafts">
-                                        <button className='if-profile-nav-btn'>
-                                            <div className='d-flex align-items-center gap-2'>
-                                                <div className='if-text-no-break'>Drafted blogs</div>
-                                                {blogNum?.draftBlogCount > 0 && <div className='if-prof-nav-upload-count-box'>{blogNum?.draftBlogCount}</div>}
-                                            </div>
-                                            <div className='if-profile-nav-opt-bottom'></div>
-                                        </button>
-                                    </NavLink>
-                                </div>
-                            </CurrentUserContainer>
+                        </CurrentUserContainer>
+                        <div className='if-profile-nav-bar-item'>
+                            <NavLink to="contributions">
+                                <button className='if-profile-nav-btn'>
+                                    <div className='d-flex align-items-center gap-2'>
+                                        <div>Contributions</div>
+                                        {blogNum?.contributionCount > 0 && <div className='if-prof-nav-upload-count-box'>{blogNum?.contributionCount}</div>}
+                                    </div>
+                                    <div className='if-profile-nav-opt-bottom'></div>
+                                </button>
+                            </NavLink>
                         </div>
                     </div>
                     <div className='if-profile-outlet-box'>
@@ -370,6 +354,41 @@ export const DraftedBlogSection = () => {
     )
 }
 
+export const ContributionSection = () => {
+    // const get user from param
+    const params = useParams()
+    const userName = params.param
+
+    const [contributionList, setContributionList] = useState(null);
+    useEffect(() => {
+        const fetchlist = async () => {
+            try {
+                await axios.get(`/blog/get-contribution-list?userName=${userName}`)
+                    .then((res) => {
+                        setContributionList(res?.data?.data);
+                    })
+            } catch (error) {
+
+            }
+        }
+
+        if (userName) fetchlist();
+    }, [userName]);
+    return (
+        <div className='mt-2'>
+            {contributionList === null && <div className='d-grid align-items-center justify-content-center my-3'><DotSpinner /></div>}
+            {contributionList?.length === 0 &&
+                <div className='d-grid align-items-center justify-content-center gap-3'>
+                    <div>No contributions to display !</div>
+                </div>
+            }
+            {contributionList?.map((item, index) => {
+                return <ContributionItem key={index} data={item} onCloseContribution={e => setContributionList(contributionList.filter(cont => cont?._id !== e?._id))} userName={userName} />
+            })}
+        </div>
+    )
+}
+
 const BlogItem = ({ data }) => {
     // const get user from param
     const params = useParams()
@@ -478,5 +497,42 @@ const BlogItem = ({ data }) => {
                 </div>
             </div>
         </li>
+    )
+}
+
+const ContributionItem = ({ data, onCloseContribution, userName }) => {
+    const navigate = useNavigate();
+    // handle contribution close
+    const closeContribution = async () => {
+        if (!data) return;
+        try {
+            await axios.patch(`/blog/remove-contribution/${data?._id}`)
+                .then(() => {
+                    toast.info(`Contribution removed`);
+                    onCloseContribution(data);
+                })
+        } catch (error) {
+            toast.error("Failed to remove contribution");
+        }
+    }
+    return (
+        <div className='if-cntribution-item'>
+            <Link className='if-url-normal'><h5 className='mb-2'>{data?.blogDetails?.blogTitle}</h5></Link>
+            <div className='d-flex gap-2 align-items-center mb-2'>
+                <div><img src={data?.blogDetails?.creator?.avatar || require("../../assets/img/profile-img.png")} alt="" className='rounded-5' width={30} /></div>
+                <div>{data?.blogDetails?.creator?.name}</div>
+            </div>
+            <div className='d-flex gap-2 align-items-center mb-3'>
+                <span className='if-col-fade'>Started on {formatDate(data?.createdAt)}</span>
+                <span><i className="bi bi-dot"></i></span>
+                <span className='text-success'>active</span>
+            </div>
+            <CurrentUserContainer userName={userName}>
+                <div className='d-flex gap-2'>
+                    <button className='if-btn-2 if-btn-purple--grad' onClick={() => navigate(`/create/new?edit=true&editId=${data?.blogId}`)}><span>Edit blog</span><span><i className="ri-draft-fill"></i></span></button>
+                    <button className="if-btn-2 text-danger" onClick={closeContribution}>Close contribution</button>
+                </div>
+            </CurrentUserContainer>
+        </div>
     )
 }

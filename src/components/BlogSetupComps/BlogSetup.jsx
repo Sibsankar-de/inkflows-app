@@ -1,6 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import "./blogSetup.style.css"
+import { Dropdown } from '../dropdown/Dropdown'
+import axios from '../../configs/axios-configs'
+import AuthContext from '../../contexts/AuthContext'
 
 export const BlogSetup = ({ data, onChangeBlog }) => {
 
@@ -14,6 +17,94 @@ export const BlogSetup = ({ data, onChangeBlog }) => {
     const editorChangeHandler = (inputType, input) => {
         setBlogData({ ...blogData, [inputType]: input })
     }
+
+
+    // get active contributor list 
+    const [contributorList, setContributorList] = useState(null);
+    useEffect(() => {
+        const fetchList = async () => {
+            try {
+                await axios.get(`/blog/contributor-list/${blogData?._id}`)
+                    .then(res => {
+                        setContributorList(res.data?.data);
+                    })
+            } catch (error) {
+
+            }
+        }
+
+        if (blogData) fetchList();
+    }, [blogData]);
+
+    // get all users list
+    const [searchInput, setSearchInput] = useState("");
+    const [openDropdown, setOpenDropdown] = useState(false);
+    const [userList, setUserList] = useState(null);
+    useEffect(() => {
+        const fetchUserList = async () => {
+            try {
+                await axios.get("/user/get-userlist")
+                    .then(res => {
+                        setUserList(res.data?.data);
+                    })
+            } catch (error) {
+
+            }
+        }
+        fetchUserList();
+    }, [openDropdown]);
+
+    // filter userlist
+    const [filteredList, setFilteredList] = useState([]);
+    const { currentUser } = useContext(AuthContext);
+    useEffect(() => {
+        if (userList && searchInput) {
+            setFilteredList(userList?.filter(e => e?._id != currentUser?._id && (e?.userName?.includes(searchInput) || e?.email?.includes(searchInput)) && !contributorList?.some(cont => e?._id === cont?.userId)));
+
+        }
+    }, [userList, searchInput, currentUser, contributorList]);
+
+    // handle open close dropdown
+    useEffect(() => {
+        if (searchInput) setOpenDropdown(true)
+        else setOpenDropdown(false)
+    }, [searchInput]);
+
+    // handle add new contributors
+    const addContributor = async (contributor) => {
+        if (!data || !contributor) return;
+        const postData = {
+            blogId: data._id,
+            contributorId: contributor._id
+        }
+        try {
+            await axios.post("/blog/add-contributor", postData)
+                .then((res) => {
+                    toast.success("Contributor added");
+                    setContributorList([...contributorList, res.data?.data]);
+                    setOpenDropdown(false);
+                    setSearchInput("");
+                })
+        } catch (error) {
+            if (error.response?.status === 402) toast.warn("Contributor already exist");
+            else toast.error("Failed to add contributor");
+        }
+    }
+
+    // remove contributions
+    const removeContribution = async (contribution) => {
+        if (!contribution) return;
+        try {
+            await axios.patch(`/blog/remove-contribution/${contribution?._id}`)
+                .then(() => {
+                    toast.info(`${contribution?.userName} removed from contributor`);
+                    setContributorList(contributorList.filter(e => e?._id !== contribution?._id));
+                })
+        } catch (error) {
+            toast.error("Failed to remove contributor");
+        }
+    }
+
 
     // flows data to parent
     useEffect(() => {
@@ -31,6 +122,40 @@ export const BlogSetup = ({ data, onChangeBlog }) => {
             <div>
                 <div className='mb-4'><h5>Add searching tags</h5></div>
                 <div><TagBox onChange={e => editorChangeHandler('tagList', e)} list={blogData.tagList} /></div>
+            </div>
+            <div>
+                <h5 className='mb-3'>Add Contributors</h5>
+                <div>
+                    <div style={{ position: "relative" }} className='mb-3'>
+                        {blogData?.creator === currentUser?._id &&
+                            <input type="text" className='if-input mb-1' placeholder='Type email or username of a contributor' onChange={(e) => setSearchInput(e.target.value)} value={searchInput} />
+                        }
+                        <div>
+                            <Dropdown openState={openDropdown} className='if-contributor-find-dropdown' onClose={() => setOpenDropdown(false)} closeOnBackClick>
+                                <ul>
+                                    {filteredList?.length === 0 && <p>No matches found!</p>}
+                                    {filteredList?.map((item, index) => {
+                                        return (
+                                            <li key={index} className='mb-2' onClick={() => addContributor(item)}>
+                                                <img src={item?.avatar || require("../../assets/img/profile-img.png")} alt="" className='rounded-5' width={40} />
+                                                <p className='mb-0'>{item?.userName}</p>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </Dropdown>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 className='mb-3'>Active contributors</h6>
+                        {contributorList && <ul className='m-0 p-0 d-flex flex-wrap gap-3'>
+                            {contributorList?.length === 0 && <p>No active contributors</p>}
+                            {contributorList?.map((item, index) => {
+                                return <ContributorItem key={index} data={item} onRemove={() => removeContribution(item)} blogData={blogData} currentUser={currentUser} />
+                            })}
+                        </ul>}
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -152,5 +277,19 @@ const TagBox = ({ list, onChange }) => {
             </div>}
             {(tagList?.length === 0 && showPlaceholder) && <div>Click to type tags. Press 'enter' to add tags</div>}
         </ul>
+    )
+}
+
+const ContributorItem = ({ data, onRemove, blogData, currentUser }) => {
+    return (
+        <li className='if-contributor-item'>
+            <div className='d-grid'>
+                <img src={data?.avatar || require("../../assets/img/profile-img.png")} alt="" className='rounded-5 mb-2' width={60} />
+                {blogData?.creator === currentUser?._id &&
+                    <span className='if-contributor-remove-btn' onClick={onRemove}><i class="ri-close-circle-fill"></i></span>
+                }
+            </div>
+            <p className='mb-0 text-break text-center'>{data?.userName}</p>
+        </li>
     )
 }

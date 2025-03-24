@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BlogSetup } from '../../components/BlogSetupComps/BlogSetup'
 import { useCurrentUser } from '../../hooks/get-currentuser'
 import axios from '../../configs/axios-configs'
@@ -16,25 +16,17 @@ export const PublishBlogPage = () => {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                await axios.get(`/blog/get-blog/${blogId}`)
+                await axios.get(`/blog/get-auth-blog/${blogId}`)
                     .then((res) => {
                         setBlog(res?.data?.data)
                     })
             } catch (error) {
                 // console.log(error);
-                if (error?.response?.status === 402 || error?.response?.status === 500) navigate('*')
+                if (error?.response?.status >= 400) navigate('*')
             }
         }
         fetchBlog()
     }, [blogId])
-
-    // Throws unauthorised requests
-    const currentUser = useCurrentUser();
-    useEffect(() => {
-        if (blog && currentUser && blog?.creator !== currentUser?._id) {
-            navigate('*')
-        }
-    }, [blog, currentUser])
 
     // Get data from child
     const [blogSetupData, setBlogSetupData] = useState({})
@@ -136,14 +128,18 @@ export const PublishBlogPage = () => {
         }
     }
 
-    
+
     // handle page title
     useEffect(() => {
-        document.title = blog?`Setup blog - ${blog?.blogTitle}`:"Loading..."
+        document.title = blog ? `Setup blog - ${blog?.blogTitle}` : "Loading..."
     }, [blog])
 
     return (
         <div className='container if-blog-publish-container'>
+            <div className='if-blog-preview-btn-box'>
+                <h6 className='mb-0'>View your blog</h6>
+                <Link className='if-url-normal' to={`/create/preview/${blogId}`} target='_blank'><div className='if-preview-btn'>Show preview <i class="ri-arrow-right-s-line"></i></div></Link>
+            </div>
             <div>
                 <h4>Setup your upload</h4>
             </div>

@@ -152,6 +152,8 @@
     padding: 0 1em;
     border-bottom: 1px solid var(--if-border-ult);
     background-color: var(--if-bg-color);
+    position: sticky;
+    top: 4em;
 }
 
 .if-profile-nav-bar-item a {
@@ -289,6 +291,16 @@
 
 /***** End Upload sections *****/
 
+.if-cntribution-item{
+    padding: 0.7em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid var(--if-border-ult);
+}
+
+.if-cntribution-item:last-child{
+    border-bottom: 0;
+}
+
 
 /***** Responsive css *****/
 @media screen and (max-width: 950px) {
@@ -377,6 +389,18 @@
     .if-profile-user-det-box-follow-sec{
         justify-self: center;
         justify-content: center;
+    }
+
+    .if-profile-nav-bar{
+        padding-left: 0.2em;
+        padding-right: 0.2em;
+        justify-content: space-between;
+        gap: 0em;
+    }
+
+    .if-profile-nav-btn{
+        font-size: 1em;
+        padding: 0 0.5em;
     }
 
     .if-profile-blog-item-btn-box{

@@ -30,7 +30,7 @@ function App() {
   // Goto top on change location
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [location])
+  }, [location.pathname])
 
   // Toast theme
   const [toastTheme, setToastTheme] = useState("light")

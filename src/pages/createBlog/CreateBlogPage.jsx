@@ -203,7 +203,7 @@ export const CreateBlogPage = () => {
         setNxtPage(true)
     }
     useEffect(() => {
-        if (nxtPage && blog?._id) navigate(`/create/preview/${blog?._id}`)
+        if (nxtPage && blog?._id) navigate(`/create/publish/${blog?._id}`)
     }, [nxtPage, blog])
 
     // handle page title
@@ -233,7 +233,7 @@ export const CreateBlogPage = () => {
                 </div>
                 <div>
                     <button className='if-btn-2 if-btn-blue--grad' disabled={saveLoader} onClick={handleContinue} >
-                        <span>Continue to preview</span>
+                        <span>Continue to upload</span>
                         <span><i className="ri-arrow-right-s-line"></i></span>
                     </button>
                 </div>

@@ -61,6 +61,18 @@
     }
 }
 
+.if-blog-page-contributor-more-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #5485bec6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #e9e9e9;
+}
+
 .if-blog-user-seggestion-box {
     padding-left: 0;
     margin-bottom: 0;

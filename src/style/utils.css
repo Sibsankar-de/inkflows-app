@@ -221,6 +221,7 @@
     border: 1px solid var(--if-border-ult);
     outline: none;
     transition: 0.3s;
+    background-color: inherit;
 }
 
 .if-input:focus {

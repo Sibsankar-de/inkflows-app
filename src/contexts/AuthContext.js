@@ -3,6 +3,7 @@ import { useState, useEffect, createContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { DotSpinner } from '../components/LoadingSpinner/DotSpinner';
 import axios from '../configs/axios-configs';
+import { useCurrentUser } from '../hooks/get-currentuser';
 
 const AuthContext = createContext()
 
@@ -27,11 +28,13 @@ export const AuthProvider = ({ children }) => {
             }
         }
         handleAuth()
-    }, [])
+    }, []);
+
+    const currentUser = useCurrentUser();
 
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated }}>
+        <AuthContext.Provider value={{ isAuthenticated, currentUser }}>
             {
                 isAuthenticated === null ?
                     <LoadingComp /> :

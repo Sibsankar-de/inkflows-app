@@ -5,7 +5,7 @@ import { BlogPage } from '../pages/Blogpage/BlogPage'
 
 import { ErrorPage } from '../pages/errorpage/ErrorPage'
 import { Home } from '../pages/home/Home'
-import { DraftedBlogSection, Profile, UploadSection } from '../pages/profile/Profile'
+import { ContributionSection, DraftedBlogSection, Profile, UploadSection } from '../pages/profile/Profile'
 import { SearchBarPage } from '../pages/Searchpage/SearchBarPage'
 import { PrivateRouter } from './Private.routes'
 import { SearchPage } from '../pages/Searchpage/SearchPage'
@@ -26,6 +26,7 @@ export const AppRouter = () => {
                 <Route path='/profile/:param' element={<Navigate to={'uploads'} />} />
                 <Route path='uploads' element={<UploadSection />} />
                 <Route path='drafts' element={<DraftedBlogSection />} />
+                <Route path='contributions' element={<ContributionSection />} />
             </Route>
             <Route path='blog/:blogId' element={<BlogPage />} />
 

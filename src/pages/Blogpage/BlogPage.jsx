@@ -375,6 +375,25 @@ export const BlogPage = () => {
                                     </div>}
                             </div>
                         </div>
+                        {blog?.contributors?.length > 0 &&
+                            <div className='mt-3'>
+                                <h6 className='mb-2'>Contributors</h6>
+                                <div className='d-flex align-items-center'>
+                                    {blog?.contributors?.map((item, index) => {
+                                        if (index > 4) return;
+                                        else if (index == 4)
+                                            return (
+                                                <div key={index} style={{ transform: `translateX(-60px)` }} className='if-blog-page-contributor-more-box'>{blog?.contributors?.length - 3}</div>
+                                            )
+                                        else
+                                            return (
+                                                <div key={index} style={{ transform: `translateX(-${index * 20}px)` }}>
+                                                    <Link to={`/profile/${item?.userName}`}><img src={item?.avatar || require('../../assets/img/profile-img.png')} alt="" width={50} className='rounded-5' /></Link>
+                                                </div>
+                                            )
+                                    })}
+                                </div>
+                            </div>}
                     </div>
                     {creatorBlogList?.length > 0 &&
                         <div>
@@ -400,7 +419,7 @@ export const BlogPage = () => {
                         </div>
                     }
                 </div>
-            </section>
+            </section >
             <section className='if-blog-section-width'>
                 <div className='mb-5'>
                     <h4>Suggested For you</h4>
@@ -438,7 +457,7 @@ export const BlogPage = () => {
                 &copy;Inkflows 2024. All rights are reserved.
             </section>
             <Tooltip id='if-blog-page-tooltip' />
-        </div>
+        </div >
     )
 }
 

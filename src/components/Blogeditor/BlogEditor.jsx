@@ -185,7 +185,6 @@ const ContentSection = ({ section, onContentChange, contentList, index, sectionI
     const [margin, setMargin] = useState(Number(section?.mb?.replace('px')) || 0)
     const style = {
         marginBottom: margin + 'px',
-        transition: 'margin 0.2s'
     }
     useEffect(() => {
         onMarginAdd(margin + 'px', sectionId)

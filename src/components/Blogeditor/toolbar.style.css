@@ -7,6 +7,9 @@
     transition: 0.2s;
     overflow: hidden;
     height: 3em;
+    position: sticky;
+    z-index: 5;
+    top: 0.3em;
 }
 
 .if-quill-toolbar-container::-webkit-scrollbar {
