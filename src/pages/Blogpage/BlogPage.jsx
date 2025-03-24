@@ -454,7 +454,7 @@ export const BlogPage = () => {
                 }
             />
             <section className='if-blog-footer text-center if-col-fade'>
-                &copy;Inkflows 2024. All rights are reserved.
+                &copy;Inkflows {new Date().getFullYear()}. All rights are reserved.
             </section>
             <Tooltip id='if-blog-page-tooltip' />
         </div >
