@@ -226,14 +226,13 @@ export const CreateBlogPage = () => {
             <div className='if-blog-edit-p-btm-btn-box mb-4'>
                 <div>
                     <button className='if-btn-2 if-btn-green--grad' onClick={handleBlogSubmit} disabled={saveLoader}>
-                        {saveLoader && <DotSpinner />}
                         <span><i className="ri-draft-line"></i></span>
-                        <span>Save as draft</span>
+                        <span>{saveLoader?"Saving...":"Save as draft"}</span>
                     </button>
                 </div>
                 <div>
                     <button className='if-btn-2 if-btn-blue--grad' disabled={saveLoader} onClick={handleContinue} >
-                        <span>Continue to upload</span>
+                        <span>Continue</span>
                         <span><i className="ri-arrow-right-s-line"></i></span>
                     </button>
                 </div>

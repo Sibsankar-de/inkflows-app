@@ -149,16 +149,14 @@ export const PublishBlogPage = () => {
             <div className='if-blog-edit-p-btm-btn-box mb-4'>
                 <div>
                     <button className='if-btn-2 if-btn-green--grad' onClick={handleDraftSave} disabled={draftLoader || publishLoader}>
-                        {draftLoader && <DotSpinner />}
                         <span><i className="ri-draft-line"></i></span>
-                        <span>Save as draft</span>
+                        <span>{draftLoader ? "Saving..." : "Move to draft"}</span>
                     </button>
                 </div>
                 <div>
                     <button className='if-btn-2 if-btn-purple--grad' onClick={handlePublish} disabled={draftLoader || publishLoader}>
-                        {publishLoader && <DotSpinner />}
                         <span><i className="ri-earth-line"></i></span>
-                        <span>Publish</span>
+                        <span>{publishLoader ? "Publishing..." : "Publish"}</span>
                     </button>
                 </div>
             </div>
