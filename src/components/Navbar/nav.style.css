@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em;
+    padding: 0.5em 1em;
     gap: 5em;
     width: 100%;
     background-color: var(--if-bg-color)ffdb;

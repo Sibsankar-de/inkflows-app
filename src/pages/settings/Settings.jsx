@@ -129,33 +129,18 @@ export const ProfileSettings = () => {
     const [isUserAvailable, setIsUserAvailable] = useState(true)
     const [isUserValidate, setIsUserValidate] = useState(true)
     useEffect(() => {
-        const fetchUserNameList = async () => {
-            try {
-                await axios.get('/user/get-usernamelist')
-                    .then(res => {
-                        const userNameList = res?.data?.data
-                        const userName = userInput?.userName
-                        if (userName !== currentUser?.userName && userNameList?.includes(userName)) {
-                            setIsUserAvailable(false)
-                        } else {
-                            setIsUserAvailable(true)
-                        }
-                    })
-            } catch (error) {
-                // console.log(error);
-                setIsUserAvailable(false)
-            }
+        const validateUser = async () => {
+            const { isUserAvailable, isNameUseable } = await validateUsername(userInput?.userName);
+
+            if (!isUserAvailable && userInput?.userName !== currentUser?.userName) setIsUserAvailable(false);
+            else setIsUserAvailable(true);
+
+            if (isNameUseable) setIsUserValidate(true);
+            else setIsUserValidate(false);
         }
 
-        const checkUserValidity = async () => {
-            const { status, isUserValidate } = await validateUsername(userInput?.userName)
-            if (userInput?.userName !== currentUser?.userName) {
-                setIsUserValidate(isUserValidate)
-            }
-        }
-
-        fetchUserNameList()
-        checkUserValidity()
+        if (currentUser && userInput?.userName)
+            validateUser();
 
     }, [userInput?.userName, currentUser])
 
@@ -225,7 +210,7 @@ export const ProfileSettings = () => {
                     <div className='if-setttings-profile-user-det-box'>
                         <div className='fs-5'>
                             <div className='if-setttings-profile-user-input-box'>
-                                <input type="text" placeholder='Full name' className='if-settings-prof-det-input' id='if-set-profile-uname-input' value={userInput?.fullName||''} onChange={e => setUserInput({ ...userInput, fullName: e.target.value })} disabled={saveLoader} />
+                                <input type="text" placeholder='Full name' className='if-settings-prof-det-input' id='if-set-profile-uname-input' value={userInput?.fullName || ''} onChange={e => setUserInput({ ...userInput, fullName: e.target.value })} disabled={saveLoader} />
                             </div>
                         </div>
                         <div className='justify-self-end'>
@@ -234,25 +219,26 @@ export const ProfileSettings = () => {
                             </label>
                         </div>
                     </div>
-                    <div className='if-setttings-profile-user-det-box'>
-                        <div className='if-setttings-profile-user-input-box'>
-                            <input type='text' name="" id="if-set-profile-des-input" placeholder='user name' className='if-settings-prof-det-input' value={userInput?.userName} onChange={e => setUserInput({ ...userInput, userName: e.target.value })} disabled={saveLoader} />
+                    <div>
+                        <div className='if-setttings-profile-user-det-box'>
+                            <div className='if-setttings-profile-user-input-box'>
+                                <input type='text' name="" id="if-set-profile-des-input" placeholder='user name' className='if-settings-prof-det-input' value={userInput?.userName} onChange={e => setUserInput({ ...userInput, userName: e.target.value })} disabled={saveLoader} />
+                            </div>
+                            <div className='justify-self-end'>
+                                <label htmlFor="if-set-profile-des-input">
+                                    <span className='if-btn c-pointer'><i className="ri-pencil-fill fs-5"></i></span>
+                                </label>
+                            </div>
                         </div>
-                        <div className='justify-self-end'>
-                            <label htmlFor="if-set-profile-des-input">
-                                <span className='if-btn c-pointer'><i className="ri-pencil-fill fs-5"></i></span>
-                            </label>
-                        </div>
+                        {!isUserAvailable && <p className='text-danger if-font-s'><span><i className="ri-information-2-line"></i> </span><span>User name already taken</span></p>}
+                        {!isUserValidate && <p className='text-danger if-font-s'><span><i className="ri-information-2-line"></i> </span><span>User name is not valid.</span> <a href="" className='if-url-coloured'>Learn more</a></p>}
                     </div>
-                    {!isUserAvailable && <p className='text-danger if-font-s'><span><i className="ri-information-2-line"></i> </span><span>User name already taken</span></p>}
-                    {!isUserValidate && <p className='text-danger if-font-s'><span><i className="ri-information-2-line"></i> </span><span>User name is not valid.</span> <a href="" className='if-url-coloured'>Learn more</a></p>}
 
                 </div>
             </div>
             <div className='justify-self-end align-self-end'>
                 <button className='if-btn-2 if-btn-green--grad' onClick={handleProfileSave} disabled={saveLoader}>
-                    {saveLoader && <DotSpinner />}
-                    <span>Save Changes</span>
+                    <span>{saveLoader ? "Saving changes..." : "Save Changes"}</span>
                 </button>
             </div>
             <ImageCropPopup activeState={imageInput ? true : false} imageFile={imageInput} onClose={() => setImageInput(null)} onCropped={file => file && setCroppedIamge(file)} />
@@ -412,8 +398,8 @@ export const SecuritySettings = () => {
                     <div className='mb-2'>Log out from this account</div>
                     <div>
                         <button className='if-btn-2 text-danger' onClick={handleLogOut} disabled={logoutLoader}>
-                            {logoutLoader && <DotSpinner />}
-                            <span>Log out</span>
+                            <span>{logoutLoader ? "Logging out..." : "Log out"}</span>
+                            <span><i class="ri-logout-box-r-line"></i></span>
                         </button>
                     </div>
                 </div>
@@ -465,8 +451,7 @@ const PasswordChangePopup = ({ activeState, onClose }) => {
                 <div className='if-popup-ftr-btn-box'>
                     <button className='if-btn-2' onClick={() => onClose(false)}>Cancel</button>
                     <button className='if-btn-2 if-btn-blue--grad' disabled={loader} onClick={handlePasswordChange}>
-                        {loader && <DotSpinner />}
-                        <span>Change Password</span>
+                        <span>{loader ? "Updating..." : "Change Password"}</span>
                     </button>
                 </div>
             </div>

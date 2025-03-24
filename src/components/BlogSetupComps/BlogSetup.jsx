@@ -59,8 +59,7 @@ export const BlogSetup = ({ data, onChangeBlog }) => {
     const { currentUser } = useContext(AuthContext);
     useEffect(() => {
         if (userList && searchInput) {
-            setFilteredList(userList?.filter(e => e?._id != currentUser?._id && (e?.userName?.includes(searchInput) || e?.email?.includes(searchInput)) && !contributorList?.some(cont => e?._id === cont?.userId)));
-
+            setFilteredList(userList?.filter(e => e?._id != currentUser?._id && (e?.userName?.includes(searchInput.toLowerCase()) || e?.email?.includes(searchInput.toLowerCase())) && !contributorList?.some(cont => e?._id === cont?.userId)));
         }
     }, [userList, searchInput, currentUser, contributorList]);
 

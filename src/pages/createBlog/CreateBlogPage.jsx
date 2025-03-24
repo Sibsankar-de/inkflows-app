@@ -4,16 +4,11 @@ import { BlogEditor } from '../../components/Blogeditor/BlogEditor'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import axios from '../../configs/axios-configs'
 import { toast } from 'react-toastify'
-import { useCurrentUser } from '../../hooks/get-currentuser'
-import { DotSpinner } from '../../components/LoadingSpinner/DotSpinner'
 import { useScreenShotFromString } from '../../hooks/create-screenshot'
 import { imageCompressor } from '../../utils/functions/imageCompressor'
 
 export const CreateBlogPage = () => {
     const navigate = useNavigate()
-
-    // Fetch current user
-    const currentUser = useCurrentUser()
 
     // Handle blog from Blog editor
     const [data, setData] = useState(null)
@@ -188,10 +183,10 @@ export const CreateBlogPage = () => {
                 await handleBlogCreate()
             }
         }
-        if (!blogData?.blogTitle?.length > 10) {
+        if (blogData?.blogTitle?.length < 10) {
             toast.error("Blog title length must be 10 or more")
         }
-        if (!blogData?.contentList?.length > 0) {
+        if (blogData?.contentList?.length === 0) {
             toast.error("Atleast one Content is required")
         }
     }
@@ -208,8 +203,8 @@ export const CreateBlogPage = () => {
 
     // handle page title
     useEffect(() => {
-        document.title = `Inkflows - Craft a new think`
-    }, [])
+        document.title = (edit && blogId) ? `Edit ${blog?.title} - Inkflows` : `Inkflows - Craft a new think`
+    }, [blog])
 
     return (
         <div className='container if-create-blog-page-container'>
@@ -227,7 +222,7 @@ export const CreateBlogPage = () => {
                 <div>
                     <button className='if-btn-2 if-btn-green--grad' onClick={handleBlogSubmit} disabled={saveLoader}>
                         <span><i className="ri-draft-line"></i></span>
-                        <span>{saveLoader?"Saving...":"Save as draft"}</span>
+                        <span>{saveLoader ? "Saving..." : "Save as draft"}</span>
                     </button>
                 </div>
                 <div>

@@ -24,7 +24,7 @@
     width: 100%;
     display: flex;
     justify-content: end;
-    gap: 1em;
+    gap: 0.6em;
     align-self: end;
 }
 
@@ -125,7 +125,7 @@
 
 @media (max-width: 390px) {
     .if-blog-edit-p-btm-btn-box {
-        flex-direction: column;
+        flex-flow: wrap;
         align-items: end;
         gap: 0.5em;
     }
