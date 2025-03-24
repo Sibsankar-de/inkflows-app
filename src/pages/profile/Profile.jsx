@@ -517,7 +517,7 @@ const ContributionItem = ({ data, onCloseContribution, userName }) => {
     }
     return (
         <div className='if-cntribution-item'>
-            <Link className='if-url-normal'><h5 className='mb-2'>{data?.blogDetails?.blogTitle}</h5></Link>
+            <Link className='if-url-normal' to={`/blog/${data?.blogId}`}><h5 className='mb-2'>{data?.blogDetails?.blogTitle}</h5></Link>
             <div className='d-flex gap-2 align-items-center mb-2'>
                 <div><img src={data?.blogDetails?.creator?.avatar || require("../../assets/img/profile-img.png")} alt="" className='rounded-5' width={30} /></div>
                 <div>{data?.blogDetails?.creator?.name}</div>
