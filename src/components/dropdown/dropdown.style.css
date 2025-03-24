@@ -1,11 +1,11 @@
 .if-dropdown-box{
     position: absolute;
-    background-color: #ffff;
+    background-color: var(--if-bg-color);
     z-index: 7;
     padding: 0.7em;
-    box-shadow: 0 0 9px 0 #dcdcdc;
+    box-shadow: 0 0 9px 0 var(--if-secondary-col);
     border-radius: 5px;
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--if-border-ult);
     animation: dropdownInAnim 0.4s 1;
 }
 

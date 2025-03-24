@@ -44,11 +44,11 @@
     transition: padding 0.3s, border 0.3s, box-shadow 0.3s, margin 0.2s;
 }
 
-.if-editor-content-box:focus-within {
+/* .if-editor-content-box:focus-within {
     padding: 0.5em;
     box-shadow: 0 0 4px 0 #5486be80;
     border-color: #5486be80;
-}
+} */
 
 /* delete btn css  */
 .if-content-remove-box {
