@@ -13,25 +13,17 @@ export const PreviewPage = () => {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                await axios.get(`/blog/get-blog/${blogId}`)
+                await axios.get(`/blog/get-auth-blog/${blogId}`)
                     .then((res) => {
                         setBlog(res?.data?.data)
                     })
             } catch (error) {
                 // console.log(error);
-                if (error?.response?.status === 402 || error?.response?.status === 500) navigate('*')
+                if (error?.response?.status >= 400) navigate('*')
             }
         }
         fetchBlog()
     }, [blogId])
-
-    // Throws unauthorised requests
-    const currentUser = useCurrentUser();
-    useEffect(() => {
-        if (blog && currentUser && blog?.creator !== currentUser?._id) {
-            navigate('*')
-        }
-    }, [blog, currentUser])
 
     // Back button click handler
     const backBtnHandler = () => {

@@ -133,15 +133,17 @@ export const CreateBlogPage = () => {
     const [fetchedBlog, setFetchedBlog] = useState(null)
     useEffect(() => {
         const fetchBlog = async () => {
-            await axios.get(`/blog/get-blog/${blogId}`)
-                .then((res) => {
-                    setData(res?.data?.data)
-                    setFetchedBlog(res?.data?.data)
+            try {
+                await axios.get(`/blog/get-auth-blog/${blogId}`)
+                    .then((res) => {
+                        setData(res?.data?.data)
+                        setFetchedBlog(res?.data?.data)
 
-                })
-                .catch(err => {
-                    if (err?.response?.status === 402) navigate('*')
-                })
+                    })
+            } catch (error) {
+                // console.log(error);
+                if (error?.response?.status >= 400) navigate('*')
+            }
         }
         if (edit && blogId) {
             fetchBlog()
