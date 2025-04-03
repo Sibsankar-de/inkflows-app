@@ -12,7 +12,7 @@ import { closeOnBackClick } from '../../utils/functions/closeOnBackClick.js'
 import { Spinner } from '../../components/LoadingSpinner/Spinner.jsx'
 import { toast, ToastContainer } from 'react-toastify';
 import { htmlToText } from 'html-to-text';
-import { createContext } from 'react';
+import { Textarea } from '../Input/Textarea.jsx';
 
 export const BlogEditor = ({ data, onChange }) => {
 
@@ -45,11 +45,13 @@ export const BlogEditor = ({ data, onChange }) => {
         const createContent = (list) => {
             let updateList = list ? [...list] : [...contentList]
             // changes sectionid 
-            let newList = [...updateList?.slice(0, id), { sectionId: id, type: type }, ...updateList?.slice(id)]
+            let newList = [...updateList?.slice(0, id), { sectionId: id, type: type, content: {} }, ...updateList?.slice(id)]
+            console.log(newList);
 
-            for (let i in newList) {
-                newList[i].sectionId = i
-            }
+
+            // for (let i in newList) {
+            //     newList[i].sectionId = i
+            // }
 
             setContentList(newList)
         }
@@ -117,8 +119,9 @@ export const BlogEditor = ({ data, onChange }) => {
         <div>
             <section className='if-blog-edit-container'>
                 <div>
-                    <h2><input type="text" placeholder='Title of the blog*' className='if-blog-title-input' onChange={e => setBlogTitle(e.target.value)} value={blogTitle} /></h2>
+                    <h2><Textarea placeholder='Title of the blog*' className='if-blog-title-input' onChange={e => setBlogTitle(e)} value={blogTitle} /></h2>
                 </div>
+
             </section>
             <section className='mt-3 if-add-blog-editor-section'>
                 {

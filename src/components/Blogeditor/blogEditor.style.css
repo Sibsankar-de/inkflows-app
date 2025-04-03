@@ -173,6 +173,11 @@
     text-decoration: none !important;
 }
 
+.ql-snow a, .pl-snow p {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
 /***** End Text editor css *****/
 
 /***** Code editor style *****/

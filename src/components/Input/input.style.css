@@ -53,3 +53,11 @@
     backdrop-filter: blur(10px);
     border-radius: 10px;
 }
+
+.if-textarea{
+    resize: none;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: inherit;
+}

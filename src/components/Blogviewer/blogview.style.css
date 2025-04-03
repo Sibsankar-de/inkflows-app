@@ -30,6 +30,11 @@
     text-decoration: none;
 }
 
+.if-blog-view-text-content a, .if-blog-view-text-content p{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
 /***** End Text viewer style *****/
 
 /***** Image viewer style *****/
